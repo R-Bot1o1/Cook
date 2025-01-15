@@ -103,7 +103,7 @@
 
     <img id="cursor-img" src="BIG_BUN.png" alt="Cursor Image">
 
-    <button id="copy-btn" type="button" onclick="location.href='landing-page.html'" onmousedown="sound1.play()">Eat a $BUN</button>
+    <button id="copy-btn" type="button" onclick="location.href='Landing-page.html'" onmousedown="sound1.play()">Eat a $BUN</button>
 
     <div class="rain rain1"></div>
       <div class="rain rain2">
@@ -161,10 +161,7 @@
             });
             doorSound.play(); // Play the door opening sound
 
-            setTimeout(function() {
-                document.querySelector('.overlay').classList.add('fade-out');
-                document.body.style.opacity = 1; // Fade in the body content
-            }, 2000); // Delay the fade-out to match the door opening duration
+
         };
 
         // Adjust the size of the button based on the viewport size

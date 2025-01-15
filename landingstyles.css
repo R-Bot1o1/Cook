@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   height: 100%;
-  background: #eb8080;
+  background: #000000;
   overflow: hidden;
   perspective: 10rem;
   cursor: url('crsr.png')-100 120, auto;
