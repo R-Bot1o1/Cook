@@ -1,50 +1,28 @@
-<!--Recreated southernshotty's rocket cartoon. See: https://www.youtube.com/watch?v=wMBu4ctUxn8-->
-<link rel="stylesheet" href="styles.css">
-<script src="script.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        html,
-        body {
-          margin: 0;
-          height: 100%;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="landingstyles.css">
+</head>
+<style>
+
+@font-face {
+  font-family: myf;
+  src: url(FujiFantastic-Bold.otf);
+}
+
+    body{
           background: #ECDBC3;
-          overflow: hidden;
-          perspective: 10rem;
-          cursor: url('crsr.png') -100 120, auto; /* Apply the custom cursor to the body */
         }
-
-        img {
-            width: 10%;
-        }
-
-        #cursor-img{
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            pointer-events: none; /* Prevent the image from interfering with mouse events */
-            transition: transform 0.1s ease-out; /* Add a transition for smooth movement */
-        }
-        
-        div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 25vh;
-        }
-
-        .gif{
-            width: 50%;
-        }
-
+    
         #copy-btn{
+            content: "Where are the socials? Choose the correct box";
+            letter-spacing: 1px;    
             
-            width: 50%;
-            font-family: my2;
-            letter-spacing: 1px;
-            font-size: 30px;
+            font-family: myf;
+            font-size: 50px;
             /* font-weight: bold; */
             padding: 8px 140px;
             cursor: pointer;
@@ -54,95 +32,80 @@
         }
 
         button{
-            display: block;
-            margin: 50px auto;
+            position: absolute;
+            display: flex;
+            top: 50%;
+            left: 50%;
+            margin: 50px -100px;
+            width: 40%;
             background-color: #C0342F;
+            
         }
+
 
         #copy-btn:hover{
             box-shadow: 3px 3px rgb(255, 255, 255), 6px 6px 0 0 #0f172a;
             background-color: #D3A248;
-            color: #ffffff;
             transform: translate(-2px -2px);
             border-radius: 50px;
-        }
-
-        .mute-unmute-btn:hover{
-            box-shadow: 3px 3px rgb(255, 255, 255), 6px 6px 0 0 #0f172a;
             color: #ffffff;
-            background-color: #D3A248;
-            transform: translate(-2px -2px);
-            border-radius: 50px;
         }
 
-        h3{
-            display: block;
-            font-family: myf;
-            margin: 300px 10px 500px 10px;
-            color: black;
-            font-weight: bold;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        img{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            pointer-events: none; /* Prevent the image from interfering with mouse events */
+            transition: transform 0.1s ease-out; /* Add a transition for smooth movement */
         }
 
-        #fb{
-          width: 20%;
-          display: block;
-          margin: -150px 10px 0px 350px;
-          height: -1050vh;
-        }
-
-        #cb{
-          width: 20%;
-          display: block;
-          margin: -150px -350px 0px 850px;
-          height: -1050vh;
-        }
-
-        .mute-unmute-btn {
+        .door {
             position: fixed;
-            font-family: my2;
-            letter-spacing: 1px;
-            font-size: 30px;
-            bottom: 20px;
-            right: 20px;
-            background-color: #C0342F;
-            color: rgb(0, 0, 0);
-            /* border: none; */
-            padding: 10px 20px;
-            cursor: pointer;
-            /* font-size: 16px; */
-            border: 5px solid #0f172a;
-            box-shadow: 2px 2px 0 0 #e4dcdc, 4px 4px 0 0 #0f172a;
-            transition-duration: 200ms;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: url('store.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1000;
+            transition: transform 5s ease;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid #2c2c2c;
         }
 
-        
-        
-    </style>
-    
-        <audio id="background-audio" controls autoplay visibility: hidden> 
-            <source src="Medieval Lofi Beat Fairy Tale  Free to Use (No Copyright).mp3" type="audio/mp3"> </audio>
-</head>
+        .door-right {
+            left: 50%;
+        }
 
+        .door.open {
+            transform: translateX(-100%);
+        }
+
+        .door-right.open {
+            transform: translateX(100%);
+        }
+
+        .door::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+</style>
 <body>
-  
-    <button id="copy-btn" onmousedown="sound1.play()" style="font-size: 24px; padding: 8px 40px;">ca: RtFG7rnuUkU6XgaNQcSASug6T6c83bnfh</button>
-    
-    <div><img src="Gifs/asdf.gif" alt="image"></div>
+    <div class="door"></div>
+    <div class="door door-right"></div>
+    <div class="overlay"></div>
 
     <img id="cursor-img" src="BIG_BUN.png" alt="Cursor Image">
-    
-    <!-- <h3 id="myInp"  type="text">CA: <p style="user-select: all">78d6PZWwkYpLtFG7rnuUkU6XgaNQcSASug6T6c83bnfh</p></h3> -->
 
-    <div class="copyfield">
-      <!-- Add real ca here!! -->
-      <span id="link" visiblility: hidden>78d6PZWwkYpLtFG7rnuUkU6XgaNQcSASug6T6c83bnfh</span>
-      <span id="copy-btn" visiblility: hidden>Copy</span>
-    </div>
-    <!-- <div class="fire-wrapper">
-        <img class="fire" src="https://stivs.dev/assets/rocket/fire.svg" />
-      </div> -->
-      <div class="rain rain1"></div>
+    <button id="copy-btn" type="button" onclick="location.href='index.html'" onmousedown="sound1.play()">Eat a $BUN</button>
+
+    <div class="rain rain1"></div>
       <div class="rain rain2">
         <div class="drop drop2"></div>
       </div>
@@ -161,79 +124,13 @@
       <div class="drop drop11"></div>
       <div class="drop drop12"></div>
       <div id="canvas"></div>
-     
-      
-      <div class="social-menu">
-        <ul>
-          <!-- <li class="discord">
-            <a href="$"><i class="fa-brands fa-discord"></i></a>
-            <audio id="beep" preload="auto">
-              <source src="Discord.MP3">
-            </audio>
-          </li> -->
-          <li class="X">
-            <a href="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <audio id="beep2" preload="auto">
-              <source src="Twitter.MP3">
-            </audio>
-          </li>
 
-          <!-- <li class="ig">
-            <a href="ig"><i class="fa-brands fa-instagram"></i></a>
-            <audio id="beep4" preload="auto">
-              <source src="Insta.MP3">
-          </li> -->
-          <li class="dex">
-            <a href="Dex"><i class="fa-solid fa-landmark"></i></a>
-            <audio id="beep5" preload="auto">
-              <source src="money.MP3">
-          </li>
+    <script>
+        var sound1 = new Audio();
+        sound1.src = "0102.MP3";
 
-          <li class="tg">
-            <a href="tg"><i class="fa-brands fa-telegram"></i></a>
-            <audio id="beep3" preload="auto">
-              <source src="Tg.MP3">
-            </audio>
-          </li>
-        </ul>
-      </div>
-
-      <button class="mute-unmute-btn" id="mute-btn">Mute</button>
-      <button class="mute-unmute-btn" id="unmute-btn" style="display:none;">Unmute</button>
-
-      <script>
-//ca button
-        var copybtn = document.getElementById("copy-btn");
-        var link = document.getElementById("link");
-
-        copybtn.onclick = function () {
-          navigator.clipboard.writeText(link.innerHTML);
-          copybtn.innerHTML="Copied CA"
-          setTimeout(function (){
-            copybtn.innerHTML="ca: "
-          }, 1000)
-        }
-         var sound1 = new Audio()
-         sound1.src = "0102.MP3"
-
-//mute-unmute button
-        const muteBtn = document.getElementById('mute-btn');
-        const unmuteBtn = document.getElementById('unmute-btn');
-        const audio = document.getElementById('background-audio');
-
-        muteBtn.addEventListener('click', () => {
-            // Mute logic here
-            audio.muted = true;
-            muteBtn.style.display = 'none';
-            unmuteBtn.style.display = 'block';
-        });
-
-        unmuteBtn.addEventListener('click', () => {
-            // Unmute logic here
-            audio.muted = false;
-            unmuteBtn.style.display = 'none';
-            muteBtn.style.display = 'block';
-        });
+        var doorSound = new Audio();
+        doorSound.src = "door-open.mp3"; // Add the path to your door opening sound effect
 
         document.addEventListener('mousemove', function(e) {
             var img = document.getElementById('cursor-img');
@@ -244,27 +141,40 @@
             var deltaX = (mouseX - imgX) * 1;
             var deltaY = (mouseY - imgY) * 1;
             img.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+
+            // Calculate the distance to the top and right edges
+            var distanceToTop = mouseY;
+            var distanceToRight = window.innerWidth - mouseX;
+
+            // Calculate the scale factor based on the distance
+            var scaleFactor = Math.min(distanceToTop, distanceToRight) / 200;
+            scaleFactor = Math.max(scaleFactor, 0); // Ensure the scale factor is not negative
+
+            // Apply the scale factor to the cursor image
+            img.style.width = `${50 * scaleFactor}px`;
+            img.style.height = `${50 * scaleFactor}px`;
         });
 
-        // Function to adjust the button text based on the viewport size
-        function adjustButtonText() {
+        window.onload = function() {
+            document.querySelectorAll('.door').forEach(function(door) {
+                door.classList.add('open');
+            });
+            doorSound.play(); // Play the door opening sound
+
+            setTimeout(function() {
+                document.querySelector('.overlay').classList.add('fade-out');
+                document.body.style.opacity = 1; // Fade in the body content
+            }, 2000); // Delay the fade-out to match the door opening duration
+        };
+
+        // Adjust the size of the button based on the viewport size
+        function adjustButtonSize() {
             var button = document.getElementById('copy-btn');
-            if (window.innerWidth < 1081) {
-                button.textContent = "Tap to copy ca";
-            } else {
-                button.textContent = "Tap to copy ca";
-            }
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+
+            // Calculate the new size based on the
         }
-
-        // Call the function on load and on resize
-        window.onload = adjustButtonText;
-        window.onresize = adjustButtonText;
-        
-      </script>
-
-      
-      
-
-
-      
+    </script>
 </body>
+</html>
